@@ -10,65 +10,102 @@ const proceduralWalls = [
   // ==========================================
   // --- REZ-DE-CHAUSSÉE (Niveau 0) ---
   // ==========================================
-  // Murs extérieurs (Bleu technologique)
-  { floor: 0, x: 0, z: -13, w: 26, h: 1.8, d: 0.15, color: "#0055ff" },
-  { floor: 0, x: 0, z: 13, w: 26, h: 1.8, d: 0.15, color: "#0055ff" },
-  { floor: 0, x: -13, z: 0, w: 0.15, h: 1.8, d: 26, color: "#0055ff" },
-  { floor: 0, x: 13, z: 0, w: 0.15, h: 1.8, d: 26, color: "#0055ff" },
-  
-  // Cloisons zone Urgences (Rouge)
-  { floor: 0, x: -6, z: -3, w: 0.1, h: 1.5, d: 10, color: "#ff3b30" }, // Cloison couloir principal
-  { floor: 0, x: -9.5, z: -8, w: 7, h: 1.5, d: 0.1, color: "#ff3b30" }, // Box 1
-  { floor: 0, x: -9.5, z: 2, w: 7, h: 1.5, d: 0.1, color: "#ff3b30" },  // Box 2
-  
-  // Cloisons zone Radiologie & Laboratoire (Bleu ciel)
-  { floor: 0, x: 6, z: -3, w: 0.1, h: 1.5, d: 10, color: "#00b0ff" }, // Cloison couloir
-  { floor: 0, x: 9.5, z: -8, w: 7, h: 1.5, d: 0.1, color: "#00b0ff" },  // Salle imagerie
-  { floor: 0, x: 9.5, z: -3, w: 7, h: 1.5, d: 0.1, color: "#00b0ff" },  // Cloison labo
-  { floor: 0, x: 9.5, z: 2, w: 7, h: 1.5, d: 0.1, color: "#00b0ff" },   // Salle prélèvements
+  // Murs extérieurs (Bleu technologique - Forme trapézoïdale réelle du RDC)
+  { floor: 0, x: 0, z: -18, w: 28, h: 1.8, d: 0.2, color: "#0055ff" },
+  { floor: 0, x: 14, z: 0, w: 0.2, h: 1.8, d: 36, color: "#0055ff" },
+  { floor: 0, x: 7, z: 18, w: 14, h: 1.8, d: 0.2, color: "#0055ff" },
+  { floor: 0, x: 0, z: 17, w: 10, h: 1.8, d: 0.2, color: "#0055ff" },
+  { floor: 0, x: -9, z: 15, w: 10, h: 1.8, d: 0.2, color: "#0055ff" },
+  { floor: 0, x: -14, z: -10, w: 0.2, h: 1.8, d: 16, color: "#0055ff" },
+  { floor: 0, x: -14, z: 12, w: 0.2, h: 1.8, d: 8, color: "#0055ff" },
+  { floor: 0, x: -12, z: 2, w: 4, h: 1.8, d: 0.2, color: "#0055ff" }, // Décroché entrée
 
-  // Cloisons Cafétéria & Admissions (Jaune)
-  { floor: 0, x: -4, z: 4.5, w: 6, h: 1.5, d: 0.1, color: "#ffcc00" },  // Cafétéria
-  { floor: 0, x: 4, z: 4.5, w: 6, h: 1.5, d: 0.1, color: "#ffcc00" },   // Admissions
-  { floor: 0, x: 0, z: 5.5, w: 0.1, h: 1.5, d: 6, color: "#ffcc00" },   // Bureau accueil
+  // Grand Patio Central Supérieur
+  { floor: 0, x: 4, z: -10, w: 8, h: 1.8, d: 0.15, color: "#00ffcc" },
+  { floor: 0, x: 4, z: 2, w: 8, h: 1.8, d: 0.15, color: "#00ffcc" },
+  { floor: 0, x: 0, z: -4, w: 0.15, h: 1.8, d: 12, color: "#00ffcc" },
+  { floor: 0, x: 8, z: -4, w: 0.15, h: 1.8, d: 12, color: "#00ffcc" },
+
+  // Patio Inférieur
+  { floor: 0, x: -4, z: 6, w: 8, h: 1.8, d: 0.15, color: "#00ffcc" },
+  { floor: 0, x: -4, z: 12, w: 8, h: 1.8, d: 0.15, color: "#00ffcc" },
+  { floor: 0, x: -8, z: 9, w: 0.15, h: 1.8, d: 6, color: "#00ffcc" },
+  { floor: 0, x: 0, z: 9, w: 0.15, h: 1.8, d: 6, color: "#00ffcc" },
+
+  // Cloisons zone Urgences (Rouge - Haut Gauche)
+  { floor: 0, x: -7, z: -8, w: 0.1, h: 1.5, d: 12, color: "#ff3b30" }, // Couloir urgences
+  { floor: 0, x: -10.5, z: -14, w: 7, h: 1.5, d: 0.1, color: "#ff3b30" },
+  { floor: 0, x: -10.5, z: -10, w: 7, h: 1.5, d: 0.1, color: "#ff3b30" },
+  { floor: 0, x: -10.5, z: -6, w: 7, h: 1.5, d: 0.1, color: "#ff3b30" },
+
+  // Cloisons zone Radiologie / Labo / Imagerie (Bleu ciel - Droite)
+  { floor: 0, x: 10, z: -8, w: 0.1, h: 1.5, d: 14, color: "#00b0ff" }, // Couloir imagerie
+  { floor: 0, x: 12, z: -14, w: 4, h: 1.5, d: 0.1, color: "#00b0ff" },
+  { floor: 0, x: 12, z: -8, w: 4, h: 1.5, d: 0.1, color: "#00b0ff" },
+  { floor: 0, x: 12, z: -2, w: 4, h: 1.5, d: 0.1, color: "#00b0ff" },
+
+  // Cloisons Restaurant (Jaune - Bas Gauche)
+  { floor: 0, x: -8, z: 4, w: 0.1, h: 1.5, d: 4, color: "#ffcc00" },
+  { floor: 0, x: -11, z: 2, w: 6, h: 1.5, d: 0.1, color: "#ffcc00" },
+  { floor: 0, x: -11, z: 8, w: 6, h: 1.5, d: 0.1, color: "#ffcc00" },
+
+  // Cloisons Unité Administrative RDC (Vert - Bas)
+  { floor: 0, x: -6, z: 12, w: 4, h: 1.5, d: 0.1, color: "#00e676" },
+  { floor: 0, x: -10, z: 14, w: 8, h: 1.5, d: 0.1, color: "#00e676" },
+  { floor: 0, x: -8, z: 11, w: 0.1, h: 1.5, d: 4, color: "#00e676" },
+
+  // Cages d'Ascenseurs RDC (Violet/Rose émissif)
+  { floor: 0, x: -2, z: -7, w: 2.2, h: 1.8, d: 2.2, color: "#d500f9" },
+  { floor: 0, x: -9, z: 10, w: 2.2, h: 1.8, d: 2.2, color: "#d500f9" },
+  { floor: 0, x: 12, z: 3, w: 2.2, h: 1.8, d: 2.2, color: "#d500f9" },
 
   // ==========================================
   // --- PREMIER ÉTAGE (Niveau 1) ---
   // ==========================================
-  // Murs extérieurs R1
-  { floor: 1, x: 0, z: -13, w: 26, h: 1.8, d: 0.15, color: "#0055ff" },
-  { floor: 1, x: 0, z: 13, w: 26, h: 1.8, d: 0.15, color: "#0055ff" },
-  { floor: 1, x: -13, z: 0, w: 0.15, h: 1.8, d: 26, color: "#0055ff" },
-  { floor: 1, x: 13, z: 0, w: 0.15, h: 1.8, d: 26, color: "#0055ff" },
+  // Murs extérieurs R1 (Alignés sur les dimensions du bâtiment)
+  { floor: 1, x: 0, z: -18, w: 28, h: 1.8, d: 0.15, color: "#0055ff" },
+  { floor: 1, x: 0, z: 18, w: 28, h: 1.8, d: 0.15, color: "#0055ff" },
+  { floor: 1, x: -14, z: 0, w: 0.15, h: 1.8, d: 36, color: "#0055ff" },
+  { floor: 1, x: 14, z: 0, w: 0.15, h: 1.8, d: 36, color: "#0055ff" },
+
+  // Cages d'Ascenseurs R1
+  { floor: 1, x: -2, z: -7, w: 2.2, h: 1.8, d: 2.2, color: "#d500f9" },
+  { floor: 1, x: -9, z: 10, w: 2.2, h: 1.8, d: 2.2, color: "#d500f9" },
+  { floor: 1, x: 12, z: 3, w: 2.2, h: 1.8, d: 2.2, color: "#d500f9" },
   
   // Cloisons Maternité (Violet/Rose)
-  { floor: 1, x: -4, z: -6, w: 0.1, h: 1.5, d: 8, color: "#e040fb" },  // Couloir maternité
-  { floor: 1, x: -8.5, z: -6, w: 9, h: 1.5, d: 0.1, color: "#e040fb" }, // Chambre accouchement
-  { floor: 1, x: -8.5, z: -2, w: 9, h: 1.5, d: 0.1, color: "#e040fb" }, // Chambre néonat
+  { floor: 1, x: -4, z: -6, w: 0.1, h: 1.5, d: 8, color: "#e040fb" },
+  { floor: 1, x: -8.5, z: -6, w: 9, h: 1.5, d: 0.1, color: "#e040fb" },
+  { floor: 1, x: -8.5, z: -2, w: 9, h: 1.5, d: 0.1, color: "#e040fb" },
 
   // Cloisons Pédiatrie (Violet/Rose)
-  { floor: 1, x: 4, z: -4, w: 0.1, h: 1.5, d: 10, color: "#e040fb" },  // Couloir pédiatrie
-  { floor: 1, x: 8.5, z: -4, w: 9, h: 1.5, d: 0.1, color: "#e040fb" },  // Salle jeux enfants
-  { floor: 1, x: 8.5, z: 1, w: 9, h: 1.5, d: 0.1, color: "#e040fb" },   // Box pédiatrique
+  { floor: 1, x: 4, z: -4, w: 0.1, h: 1.5, d: 10, color: "#e040fb" },
+  { floor: 1, x: 8.5, z: -4, w: 9, h: 1.5, d: 0.1, color: "#e040fb" },
+  { floor: 1, x: 8.5, z: 1, w: 9, h: 1.5, d: 0.1, color: "#e040fb" },
 
   // ==========================================
   // --- DEUXIÈME ÉTAGE (Niveau 2) ---
   // ==========================================
-  // Murs extérieurs R2
-  { floor: 2, x: 0, z: -13, w: 26, h: 1.8, d: 0.15, color: "#0055ff" },
-  { floor: 2, x: 0, z: 13, w: 26, h: 1.8, d: 0.15, color: "#0055ff" },
-  { floor: 2, x: -13, z: 0, w: 0.15, h: 1.8, d: 26, color: "#0055ff" },
-  { floor: 2, x: 13, z: 0, w: 0.15, h: 1.8, d: 26, color: "#0055ff" },
+  // Murs extérieurs R2 (Alignés sur les dimensions du bâtiment)
+  { floor: 2, x: 0, z: -18, w: 28, h: 1.8, d: 0.15, color: "#0055ff" },
+  { floor: 2, x: 0, z: 18, w: 28, h: 1.8, d: 0.15, color: "#0055ff" },
+  { floor: 2, x: -14, z: 0, w: 0.15, h: 1.8, d: 36, color: "#0055ff" },
+  { floor: 2, x: 14, z: 0, w: 0.15, h: 1.8, d: 36, color: "#0055ff" },
+
+  // Cages d'Ascenseurs R2
+  { floor: 2, x: -2, z: -7, w: 2.2, h: 1.8, d: 2.2, color: "#d500f9" },
+  { floor: 2, x: -9, z: 10, w: 2.2, h: 1.8, d: 2.2, color: "#d500f9" },
+  { floor: 2, x: 12, z: 3, w: 2.2, h: 1.8, d: 2.2, color: "#d500f9" },
   
   // Cloisons Cardiologie (Vert)
-  { floor: 2, x: -4, z: -6, w: 0.1, h: 1.5, d: 8, color: "#00e676" },  // Couloir cardio
-  { floor: 2, x: -8.5, z: -6, w: 9, h: 1.5, d: 0.1, color: "#00e676" }, // ECG / Écho
-  { floor: 2, x: -8.5, z: -2, w: 9, h: 1.5, d: 0.1, color: "#00e676" }, // Soins intensifs cardio
+  { floor: 2, x: -4, z: -6, w: 0.1, h: 1.5, d: 8, color: "#00e676" },
+  { floor: 2, x: -8.5, z: -6, w: 9, h: 1.5, d: 0.1, color: "#00e676" },
+  { floor: 2, x: -8.5, z: -2, w: 9, h: 1.5, d: 0.1, color: "#00e676" },
 
   // Cloisons Administration (Vert)
-  { floor: 2, x: 4, z: -6, w: 0.1, h: 1.5, d: 8, color: "#00e676" },  // Couloir admin
-  { floor: 2, x: 8.5, z: -6, w: 9, h: 1.5, d: 0.1, color: "#00e676" },  // Bureau direction
-  { floor: 2, x: 8.5, z: -2, w: 9, h: 1.5, d: 0.1, color: "#00e676" }   // Secrétariat général
+  { floor: 2, x: 4, z: -6, w: 0.1, h: 1.5, d: 8, color: "#00e676" },
+  { floor: 2, x: 8.5, z: -6, w: 9, h: 1.5, d: 0.1, color: "#00e676" },
+  { floor: 2, x: 8.5, z: -2, w: 9, h: 1.5, d: 0.1, color: "#00e676" }
 ];
 
 // Composant interne pour animer la ligne d'itinéraire (effet laser/pulse)
@@ -162,7 +199,7 @@ function HospitalFloors({ selectedFloor, isolatedMode }) {
       <group key={floor.id} position={[0, floorY, 0]}>
         {/* Plaque principale en verre coloré */}
         <mesh rotation={[-Math.PI / 2, 0, 0]}>
-          <planeGeometry args={[26, 26]} />
+          <planeGeometry args={[28, 36]} />
           <meshStandardMaterial
             color={isSelected ? "#0066ff" : "#1a2a4a"}
             roughness={0.1}
@@ -176,11 +213,11 @@ function HospitalFloors({ selectedFloor, isolatedMode }) {
         {/* Bordure brillante néon pour délimiter l'étage */}
         <Line
           points={[
-            [-13, 0, -13],
-            [13, 0, -13],
-            [13, 0, 13],
-            [-13, 0, 13],
-            [-13, 0, -13]
+            [-14, 0, -18],
+            [14, 0, -18],
+            [14, 0, 18],
+            [-14, 0, 18],
+            [-14, 0, -18]
           ]}
           color={isSelected ? "#00f0ff" : "#0055aa"}
           lineWidth={isSelected ? 4 : 1.5}
@@ -190,7 +227,7 @@ function HospitalFloors({ selectedFloor, isolatedMode }) {
 
         {/* Grillage interne pour un look "plan technologique 3D" */}
         <gridHelper 
-          args={[26, 13, isSelected ? "#00eeff" : "#20407a", isSelected ? "#003baf" : "#0e1a3a"]} 
+          args={[36, 18, isSelected ? "#00eeff" : "#20407a", isSelected ? "#003baf" : "#0e1a3a"]} 
           position={[0, 0.01, 0]} 
           transparent
           opacity={opacity * 0.5}
@@ -198,7 +235,7 @@ function HospitalFloors({ selectedFloor, isolatedMode }) {
 
         {/* Étiquette textuelle de l'étage en 3D (sans attribut 'font' pour utiliser la police par défaut intégrée) */}
         <Text
-          position={[-11.5, 0.25, 11.5]}
+          position={[-12.5, 0.25, 16.5]}
           rotation={[-Math.PI / 2, 0, 0]}
           fontSize={1.3}
           color={isSelected ? "#00f0ff" : "#4f73a5"}
