@@ -420,12 +420,17 @@ export default function App() {
               height: "100%",
               overflowY: "auto",
               overflowX: "hidden",
-              padding: "25px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
               boxSizing: "border-box"
             }}>
+              <div style={{
+                padding: "25px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
+                boxSizing: "border-box",
+                width: "100%",
+                minHeight: "100%"
+              }}>
             {/* 1. BLOC DE RECHERCHE DE DESTINATION */}
             <div>
               <div style={{ display: "flex", position: "relative", width: "100%" }}>
@@ -532,7 +537,7 @@ export default function App() {
 
                 <div style={{
                   display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
+                  gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)",
                   gap: "12px"
                 }}>
                   {frequentDestinations.map(dest => {
@@ -728,6 +733,7 @@ export default function App() {
 
               </div>
             )}
+              </div>
           </div>
 
           {/* Bouton de rétractation (Languette tactile design fixée à l'extérieur du panneau, rendue en dernier pour être au-dessus du scroll) */}
