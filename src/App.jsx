@@ -419,6 +419,7 @@ export default function App() {
               width: "100%",
               height: "100%",
               overflowY: "auto",
+              overflowX: "hidden",
               padding: "25px",
               display: "flex",
               flexDirection: "column",
@@ -427,7 +428,7 @@ export default function App() {
             }}>
             {/* 1. BLOC DE RECHERCHE DE DESTINATION */}
             <div>
-              <div style={{ display: "flex", position: "relative" }}>
+              <div style={{ display: "flex", position: "relative", width: "100%" }}>
                 <input
                   type="text"
                   placeholder={t.searchPlaceholder}
@@ -436,7 +437,7 @@ export default function App() {
                   onFocus={() => setIsKeyboardOpen(true)}
                   style={{
                     width: "100%",
-                    padding: "16px 45px 16px 20px",
+                    padding: isRtl ? "16px 20px 16px 80px" : "16px 80px 16px 20px",
                     borderRadius: "14px",
                     border: "1px solid rgba(255,255,255,0.08)",
                     background: "rgba(0,0,0,0.3)",
@@ -444,26 +445,34 @@ export default function App() {
                     fontSize: "0.95rem",
                     outline: "none",
                     fontFamily: "inherit",
-                    textAlign: isRtl ? "right" : "left"
+                    textAlign: isRtl ? "right" : "left",
+                    boxSizing: "border-box"
                   }}
                 />
                 <Search size={20} style={{
                   position: "absolute",
-                  top: "18px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
                   [isRtl ? "left" : "right"]: "20px",
-                  color: "#4f73a5"
+                  color: "#4f73a5",
+                  pointerEvents: "none"
                 }} />
                 {searchQuery && (
                   <button 
                     onClick={handleClearSearch}
                     style={{
                       position: "absolute",
-                      top: "18px",
-                      [isRtl ? "right" : "left"]: "-40px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      [isRtl ? "left" : "right"]: "48px",
                       background: "transparent",
                       border: "none",
                       color: "#ff3b30",
-                      cursor: "pointer"
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "4px"
                     }}
                   >
                     <X size={20} />
@@ -480,6 +489,7 @@ export default function App() {
                   marginTop: "10px",
                   maxHeight: "220px",
                   overflowY: "auto",
+                  overflowX: "hidden",
                   boxShadow: "0 10px 30px rgba(0,0,0,0.5)"
                 }}>
                   {searchResults.map(dest => (
@@ -653,6 +663,7 @@ export default function App() {
                     padding: "15px",
                     maxHeight: "180px",
                     overflowY: "auto",
+                    overflowX: "hidden",
                     display: "flex",
                     flexDirection: "column",
                     gap: "12px"
