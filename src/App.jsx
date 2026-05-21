@@ -408,47 +408,12 @@ export default function App() {
             alignSelf: "stretch",
             position: "relative",
             transform: isPanelCollapsed 
-              ? (isRtl ? "translateX(100%)" : "translateX(-100%)") 
+              ? (isRtl ? "translateX(calc(100% + 30px))" : "translateX(calc(-100% - 30px))") 
               : "translateX(0)",
             transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
             pointerEvents: "auto",
             zIndex: 10
           }}>
-            {/* Bouton de rétractation (Languette tactile design fixée à l'extérieur du panneau) */}
-            <button
-              onClick={() => setIsPanelCollapsed(!isPanelCollapsed)}
-              className="glass-button interactive-element"
-              style={{
-                position: "absolute",
-                top: "50%",
-                [isRtl ? "left" : "right"]: "-45px",
-                transform: "translateY(-50%)",
-                width: "45px",
-                height: "80px",
-                borderRadius: isRtl ? "16px 0 0 16px" : "0 16px 16px 0",
-                borderLeft: isRtl ? "1px solid rgba(255,255,255,0.08)" : "none",
-                borderRight: isRtl ? "none" : "1px solid rgba(255,255,255,0.08)",
-                background: "rgba(10, 18, 36, 0.85)",
-                backdropFilter: "blur(20px)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                padding: 0,
-                boxShadow: isRtl 
-                  ? "-5px 0 15px rgba(0, 0, 0, 0.3)" 
-                  : "5px 0 15px rgba(0, 0, 0, 0.3)",
-                color: "#00f0ff",
-                zIndex: 11
-              }}
-            >
-              {isPanelCollapsed ? (
-                isRtl ? <ChevronLeft size={24} /> : <ChevronRight size={24} />
-              ) : (
-                isRtl ? <ChevronRight size={24} /> : <ChevronLeft size={24} />
-              )}
-            </button>
-
             {/* LE PANNEAU EFFECTIF (Contenu avec verre flouté et défilement autonome) */}
             <div className="glass-panel" style={{
               width: "100%",
@@ -753,6 +718,41 @@ export default function App() {
               </div>
             )}
           </div>
+
+          {/* Bouton de rétractation (Languette tactile design fixée à l'extérieur du panneau, rendue en dernier pour être au-dessus du scroll) */}
+          <button
+            onClick={() => setIsPanelCollapsed(!isPanelCollapsed)}
+            className="glass-button interactive-element"
+            style={{
+              position: "absolute",
+              top: "50%",
+              [isRtl ? "left" : "right"]: "-46px",
+              transform: "translateY(-50%)",
+              width: "46px",
+              height: "80px",
+              borderRadius: isRtl ? "16px 0 0 16px" : "0 16px 16px 0",
+              borderLeft: isRtl ? "1px solid rgba(255,255,255,0.08)" : "none",
+              borderRight: isRtl ? "none" : "1px solid rgba(255,255,255,0.08)",
+              background: "rgba(10, 18, 36, 0.9)",
+              backdropFilter: "blur(20px)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              padding: 0,
+              boxShadow: isRtl 
+                ? "-5px 0 15px rgba(0, 0, 0, 0.3)" 
+                : "5px 0 15px rgba(0, 0, 0, 0.3)",
+              color: "#00f0ff",
+              zIndex: 50
+            }}
+          >
+            {isPanelCollapsed ? (
+              isRtl ? <ChevronLeft size={24} /> : <ChevronRight size={24} />
+            ) : (
+              isRtl ? <ChevronRight size={24} /> : <ChevronLeft size={24} />
+            )}
+          </button>
         </div>
 
           {/* ========================================================================= */}
