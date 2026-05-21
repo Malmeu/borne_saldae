@@ -23,6 +23,7 @@ export default function App() {
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [isAttractMode, setIsAttractMode] = useState(true);
+  const [isPanelCollapsed, setIsPanelCollapsed] = useState(false);
 
   // États de pannes / maintenance (modifiant le graphe de navigation)
   const [isElevatorBroken, setIsElevatorBroken] = useState(false);
@@ -66,6 +67,7 @@ export default function App() {
     setIsolatedMode(false);
     setPmrMode(false);
     setIsKeyboardOpen(false);
+    setIsPanelCollapsed(false);
   };
 
   // Écouter les clics sur l'écran pour réinitialiser le timer d'inactivité
@@ -140,6 +142,7 @@ export default function App() {
     setSearchQuery(lang === "FR" ? dest.nomFR : dest.nomAR);
     setSearchResults([]);
     setIsKeyboardOpen(false);
+    setIsPanelCollapsed(false); // Ouvrir le panneau s'il était rétracté
   };
 
   const handleClearSearch = () => {
@@ -398,18 +401,65 @@ export default function App() {
           pointerEvents: "none"
         }}>
           
-          {/* PANEL DE NAVIGATION & INSTRUCTIONS (À GAUCHE OU À DROITE EN RTL) */}
-          <div className="glass-panel interactive-element" style={{
+          {/* ENVELOPPE DU PANNEAU DE NAVIGATION (Gère la translation et l'overflow visible de la languette) */}
+          <div className="interactive-element" style={{
             width: "420px",
             maxHeight: "85%",
-            overflowY: "auto",
-            padding: "25px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
+            alignSelf: "stretch",
+            position: "relative",
+            transform: isPanelCollapsed 
+              ? (isRtl ? "translateX(100%)" : "translateX(-100%)") 
+              : "translateX(0)",
+            transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
             pointerEvents: "auto",
-            alignSelf: "stretch"
+            zIndex: 10
           }}>
+            {/* Bouton de rétractation (Languette tactile design fixée à l'extérieur du panneau) */}
+            <button
+              onClick={() => setIsPanelCollapsed(!isPanelCollapsed)}
+              className="glass-button interactive-element"
+              style={{
+                position: "absolute",
+                top: "50%",
+                [isRtl ? "left" : "right"]: "-45px",
+                transform: "translateY(-50%)",
+                width: "45px",
+                height: "80px",
+                borderRadius: isRtl ? "16px 0 0 16px" : "0 16px 16px 0",
+                borderLeft: isRtl ? "1px solid rgba(255,255,255,0.08)" : "none",
+                borderRight: isRtl ? "none" : "1px solid rgba(255,255,255,0.08)",
+                background: "rgba(10, 18, 36, 0.85)",
+                backdropFilter: "blur(20px)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                padding: 0,
+                boxShadow: isRtl 
+                  ? "-5px 0 15px rgba(0, 0, 0, 0.3)" 
+                  : "5px 0 15px rgba(0, 0, 0, 0.3)",
+                color: "#00f0ff",
+                zIndex: 11
+              }}
+            >
+              {isPanelCollapsed ? (
+                isRtl ? <ChevronLeft size={24} /> : <ChevronRight size={24} />
+              ) : (
+                isRtl ? <ChevronRight size={24} /> : <ChevronLeft size={24} />
+              )}
+            </button>
+
+            {/* LE PANNEAU EFFECTIF (Contenu avec verre flouté et défilement autonome) */}
+            <div className="glass-panel" style={{
+              width: "100%",
+              height: "100%",
+              overflowY: "auto",
+              padding: "25px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+              boxSizing: "border-box"
+            }}>
             {/* 1. BLOC DE RECHERCHE DE DESTINATION */}
             <div>
               <div style={{ display: "flex", position: "relative" }}>
@@ -703,6 +753,7 @@ export default function App() {
               </div>
             )}
           </div>
+        </div>
 
           {/* ========================================================================= */}
           {/* CONTROLE INTERACTIF DE LA CARTE 3D (BOUTONS SUSPENDUS SUR LA DROITE)      */}

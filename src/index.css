@@ -200,14 +200,22 @@ body {
   pointer-events: auto;
 }
 
-/* Clavier virtuel glissant */
+/* Clavier virtuel au centre avec overlay flouté */
 .keyboard-drawer {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   z-index: 100;
   pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(3, 8, 20, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: fadeIn 0.2s ease-out;
 }
 
 /* Support RTL pour l'arabe */

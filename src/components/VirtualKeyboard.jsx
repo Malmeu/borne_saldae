@@ -43,14 +43,15 @@ export default function VirtualKeyboard({ value, onChange, onSearch, lang = "FR"
     <div className="virtual-keyboard-container" style={{
       direction: "ltr", // Forcer LTR pour le conteneur du clavier pour la disposition uniforme
       background: "rgba(10, 18, 36, 0.95)",
-      borderTop: "1px solid rgba(0, 240, 255, 0.2)",
+      border: "1px solid rgba(0, 240, 255, 0.2)",
       backdropFilter: "blur(20px)",
       padding: "20px",
-      borderRadius: "24px 24px 0 0",
-      width: "100%",
+      borderRadius: "24px",
+      width: "90%",
+      maxWidth: "800px",
       boxSizing: "border-box",
-      boxShadow: "0 -10px 40px rgba(0, 0, 0, 0.5)",
-      animation: "slideUp 0.3s ease-out"
+      boxShadow: "0 20px 50px rgba(0, 0, 0, 0.6)",
+      animation: "slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)"
     }}>
       {/* Barre d'outils du clavier */}
       <div style={{
