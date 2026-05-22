@@ -63,7 +63,8 @@ export const translations = {
     allFloors: "Tous les étages (Éclaté)",
     floorIsolation: "Isoler cet étage",
     attractTitle: "Borne Interactive d'Orientation",
-    attractSubtitle: "Trouvez facilement votre chemin dans l'établissement"
+    attractSubtitle: "Trouvez facilement votre chemin dans l'établissement",
+    immersiveVisit: "🚶 Visite Immersive 3D"
   },
   AR: {
     dir: "rtl",
@@ -92,7 +93,7 @@ export const translations = {
     startSearch: "بدء البحث",
     results: "نتائج البحث",
     noResults: "لم يتم العثور على نتائج لبحثك.",
-    noResultsTip: "جرّب كلمات مفتاحية أخرى أو استخدم الاختصارات أدناه.",
+    noResultsTip: "جرّb كلمات مفتاحية أخرى أو استخدم الاختصارات أدناه.",
     viewRoute: "عرض المسار",
     backToHome: "العودة إلى الرئيسية",
     floorSelector: "اختر الطابق",
@@ -127,6 +128,7 @@ export const translations = {
     allFloors: "كل الطوابق (عرض مفكك)",
     floorIsolation: "عزل هذا الطابق",
     attractTitle: "جهاز التوجيه التفاعلي",
-    attractSubtitle: "ابحث عن طريقك بسهولة داخل المؤسسة"
+    attractSubtitle: "ابحث عن طريقك بسهولة داخل المؤسسة",
+    immersiveVisit: "🚶 جولة افتراضية ثلاثية الأبعاد"
   }
 };

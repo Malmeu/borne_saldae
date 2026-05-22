@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Shield, Settings, X, Power, AlertTriangle, BarChart3, Lock } from "lucide-react";
 
-export default function AdminPanel({ isOpen, onClose, isElevatorBroken, setIsElevatorBroken, isStairsBroken, setIsStairsBroken, t }) {
+export default function AdminPanel({ isOpen, onClose, isElevatorBroken, setIsElevatorBroken, isStairsBroken, setIsStairsBroken, t, onActivateEditor }) {
   const [code, setCode] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState("");
@@ -354,7 +354,32 @@ export default function AdminPanel({ isOpen, onClose, isElevatorBroken, setIsEle
             </div>
           </div>
 
-          <div style={{ display: "flex", justifyContent: "flex-end", gap: "15px" }}>
+          <div style={{ display: "flex", justifyContent: "flex-end", gap: "15px", width: "100%" }}>
+            <button
+              onClick={() => {
+                setIsAuthenticated(false);
+                setCode("");
+                onClose();
+                onActivateEditor();
+              }}
+              style={{
+                padding: "12px 24px",
+                borderRadius: "30px",
+                border: "1px solid rgba(0, 240, 255, 0.3)",
+                background: "rgba(0, 240, 255, 0.1)",
+                color: "#00f0ff",
+                fontSize: "1rem",
+                fontWeight: "700",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                transition: "all 0.2s"
+              }}
+            >
+              <Settings size={18} /> Activer le mode Éditeur de Carte
+            </button>
+
             <button
               onClick={() => {
                 setIsAuthenticated(false);
